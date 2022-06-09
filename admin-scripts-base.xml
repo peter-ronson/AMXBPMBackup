@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project name="admin-scripts-base">
+
+    <property location="/produits/tibco/amx_home" name="tibco.home"/>
+	<property location="${tibco.home}/administrator/3.4/scripts" name="admin.cli.scripts.directory"/>
+	<property location="${tibco.home}/components/shared/1.0.0/plugins" name="plugins.dir"/>
+	
+	<import file="${admin.cli.scripts.directory}/classpath_amxadministrator_3.4.0.xml"/>
+	<import file="${admin.cli.scripts.directory}/classpath_jms_3.4.0.xml"/>
+	<import file="${admin.cli.scripts.directory}/classpath_soap_3.4.0.xml"/>
+	<import file="${admin.cli.scripts.directory}/classpath_rest_3.4.0.xml"/>
+		
+	<path id="plugins"/>
+	
+	<import file="${admin.cli.scripts.directory}/tasks_amxadministrator_3.4.0.xml"/>
+
+</project>

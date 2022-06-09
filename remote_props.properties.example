@@ -1,0 +1,6 @@
+# remote_props.properties
+# AMX Administrator instance specific properties
+adminURL=http://nsb-admin-1:8180
+username=root
+password=t
+httpConnectionTimeout=360000

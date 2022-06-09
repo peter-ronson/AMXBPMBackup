@@ -1,0 +1,24 @@
+#####################################
+# Binaries
+#####################################
+# TIBCO environment home
+TIBCO_HOME="/produits/tibco/amx_home"
+# BPM Home
+BPM_HOME="$TIBCO_HOME/bpm/4.1"
+# AMX Home
+AMX_HOME="$TIBCO_HOME/amx/3.4"
+#####################################
+# AMX BPM Config
+#####################################
+# AMX BPM Installation home
+CONFIG_HOME="/applis/nsbd/tibco/bpm"
+# Shared Config / bpm config
+SHARED_CONFIG=/applis/nsbd/tibco/bpm/bpm
+#
+# Server list
+#
+SERVERS="dnsblx10.dns21.socgen"
+# Where to store the backups
+BACKUP_CONFIG=/applis/nsbd/tibco
+BACKUP_HOME=/produits/tibco
+BACKUP_SHARED="$BACKUP_CONFIG"

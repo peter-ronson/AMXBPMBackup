@@ -1,0 +1,105 @@
+<project name="EnterpriseSuspend" default="status">
+
+    <!-- In order to check ${ant.project.invoked-targets} we need ANT 1.8 so make sure user uses ANT 1.8 -->
+	<fail message="Ant 1.8+ required">
+	     <condition>
+			 <not><antversion atleast="1.8" /></not>
+		 </condition>
+	</fail>
+
+	<!--
+        This property lets you safely define all paths relative to the absolute location
+        of this Ant file.
+	-->
+	<dirname property="admin.samples.directory" file="${ant.file.enterprise_suspend_build}"/>
+	
+    <!-- This import defines the custom AMXAdminTask. -->
+    <import file="${admin.samples.directory}/admin-scripts-base.xml"/>
+    
+    <!-- Predefine ${dataFile} to apply the targets in this script with different parameters. -->
+    <property name="dataFile" value="${admin.samples.directory}/enterprise_suspend_data.xml"/>
+    
+    <!-- Predefine ${instanceProperties} to control a different Administrator server with this script. -->
+    <property name="instanceProperties" value="${admin.samples.directory}/remote_props.properties"/>
+
+	<!-- help to be added with default target etc -->
+	
+	
+	<basename file="${ant.file}" property="build_file_name"/>
+	
+	<!-- example way push the note in case -D option is not used
+	You can also pass note via -D while executing the script
+	<property name="note" value="making backup"/>
+	-->
+	<property name="note" value="No Description"/>
+
+	<target name="setReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="setReadOnly"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			options="note ${note}"
+			force="false"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="unsetReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="unsetReadOnly"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+		
+	<target name="statusReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="statusReadOnly"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="suspend">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="suspend"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			options="suspendEnterpriseTimeoutInSec 1800,suspendCfTimeoutInSec 1800,note ${note}"
+			force="false"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="unsuspend">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="unsuspend"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+		
+	<target name="status">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="status"
+			dataFile="${dataFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+</project>
